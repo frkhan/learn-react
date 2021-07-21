@@ -29782,16 +29782,19 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
   _createClass(BoardList, [{
     key: "render",
     value: function render() {
-      var boardItems = ['Will Do next', 'Working on it', 'Done wright'];
+      var boardItems = ['Thinking of doing', 'Will Do next', 'Working on it', 'Done wright', 'Done long time ago'];
       var listItems = boardItems.map(function (boardName) {
         return /*#__PURE__*/_react.default.createElement(_TaskBoard.default, {
           boardName: boardName
         });
-      }); // <button id=add-board type="button">+</button>
+      }); //
 
-      return /*#__PURE__*/_react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
         className: "flex-row"
-      }, listItems);
+      }, listItems), /*#__PURE__*/_react.default.createElement("button", {
+        id: "add-board",
+        type: "button"
+      }, "+"));
     }
   }]);
 
@@ -29891,7 +29894,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45997" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33799" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -5,21 +5,26 @@ class BoardList extends React.Component {
 
     render() {
 
-        let boardItems = ['Will Do next','Working on it','Done wright'];
+        let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago'];
         const listItems = boardItems.map(
             (boardName) =>
                 <TaskBoard boardName={boardName}/>
         );
 
-       // <button id=add-board type="button">+</button>
-
+       //
 
 
         return (
-                <div className="flex-row">{listItems}
-
+            <div>
+                <div className="flex-row">
+                    {listItems}
                 </div>
-        );
+                <button id="add-board" type="button">+</button>
+            </div>
+
+
+
+    );
     }
 }
 
