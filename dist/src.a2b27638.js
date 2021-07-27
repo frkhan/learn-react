@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -149,7 +149,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+},{"_css_loader":"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -23195,18 +23195,18 @@ if ("development" !== "production") {
 
                   if (renderState.tail === null && renderState.tailMode === 'hidden' && !renderedTail.alternate && !getIsHydrating() // We don't cut it if we're hydrating.
                   ) {
-                      // We need to delete the row we just rendered.
-                      // Reset the effect list to what it was before we rendered this
-                      // child. The nested children have already appended themselves.
-                      var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
+                    // We need to delete the row we just rendered.
+                    // Reset the effect list to what it was before we rendered this
+                    // child. The nested children have already appended themselves.
+                    var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
 
-                      if (lastEffect !== null) {
-                        lastEffect.nextEffect = null;
-                      } // We're done.
+                    if (lastEffect !== null) {
+                      lastEffect.nextEffect = null;
+                    } // We're done.
 
 
-                      return null;
-                    }
+                    return null;
+                  }
                 } else if ( // The time it took to render last row is greater than the remaining
                 // time we have to render. So rendering one more row would likely
                 // exceed it.
@@ -29821,7 +29821,96 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
 
 var _default = BoardList;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./TaskBoard":"src/components/TaskBoard.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./TaskBoard":"src/components/TaskBoard.js"}],"src/components/NameForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var NameForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(NameForm, _React$Component);
+
+  var _super = _createSuper(NameForm);
+
+  function NameForm(props) {
+    var _this;
+
+    _classCallCheck(this, NameForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      value: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(NameForm, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      console.log(this); //console.log( this.props.name + ":"+ event.target.value);
+
+      this.setState({
+        value: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/_react.default.createElement("label", null, this.props.name, " Name:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        value: this.state.value,
+        onChange: this.handleChange
+      })), /*#__PURE__*/_react.default.createElement("input", {
+        type: "submit",
+        value: "Submit"
+      }));
+    }
+  }]);
+
+  return NameForm;
+}(_react.default.Component);
+
+var _default = NameForm;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./scss/app.scss");
@@ -29833,6 +29922,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 var _Header = _interopRequireDefault(require("./components/Header"));
 
 var _BoardList = _interopRequireDefault(require("./components/BoardList"));
+
+var _NameForm = _interopRequireDefault(require("./components/NameForm"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29874,7 +29965,15 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)));
+      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
+        name: "Fazlur"
+      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
+        name: "Ruku"
+      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
+        name: "Fowzia"
+      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
+        name: "Farhan"
+      }));
     }
   }]);
 
@@ -29884,7 +29983,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
 var App = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(TheApp, null), App);
-},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js","./components/NameForm":"src/components/NameForm.js"}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29912,7 +30011,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58238" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44399" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30088,5 +30187,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
+},{}]},{},["../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
 //# sourceMappingURL=/src.a2b27638.js.map
