@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -149,7 +149,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
+},{"./bundle-url":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+},{"_css_loader":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -23195,18 +23195,18 @@ if ("development" !== "production") {
 
                   if (renderState.tail === null && renderState.tailMode === 'hidden' && !renderedTail.alternate && !getIsHydrating() // We don't cut it if we're hydrating.
                   ) {
-                    // We need to delete the row we just rendered.
-                    // Reset the effect list to what it was before we rendered this
-                    // child. The nested children have already appended themselves.
-                    var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
+                      // We need to delete the row we just rendered.
+                      // Reset the effect list to what it was before we rendered this
+                      // child. The nested children have already appended themselves.
+                      var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
 
-                    if (lastEffect !== null) {
-                      lastEffect.nextEffect = null;
-                    } // We're done.
+                      if (lastEffect !== null) {
+                        lastEffect.nextEffect = null;
+                      } // We're done.
 
 
-                    return null;
-                  }
+                      return null;
+                    }
                 } else if ( // The time it took to render last row is greater than the remaining
                 // time we have to render. So rendering one more row would likely
                 // exceed it.
@@ -29773,17 +29773,34 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(BoardList);
 
-  function BoardList() {
+  function BoardList(props) {
+    var _this;
+
     _classCallCheck(this, BoardList);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      boardItems: ['Thinking of doing', 'Will Do next', 'Working on it', 'Done wright', 'Done long time ago']
+    };
+    _this.addBoard = _this.addBoard.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(BoardList, [{
+    key: "addBoard",
+    value: function addBoard() {
+      //alert('Add a board!');
+      var temp = this.state.boardItems;
+      temp.push("Another Entry");
+      this.setState({
+        boardItems: temp
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var boardItems = ['Thinking of doing', 'Will Do next', 'Working on it', 'Done wright', 'Done long time ago'];
-      var listItems = boardItems.map(function (boardName) {
+      //let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago','Sixth Entry'];
+      var listItems = this.state.boardItems.map(function (boardName) {
         return /*#__PURE__*/_react.default.createElement(_TaskBoard.default, {
           boardName: boardName
         });
@@ -29792,6 +29809,7 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
         className: "flex-row"
       }, listItems), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.addBoard,
         id: "add-board",
         type: "button"
       }, "+"));
@@ -29866,7 +29884,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
 var App = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(TheApp, null), App);
-},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29894,7 +29912,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33799" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58238" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30070,5 +30088,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
+},{}]},{},["../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
 //# sourceMappingURL=/src.a2b27638.js.map
