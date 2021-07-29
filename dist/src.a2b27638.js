@@ -29732,96 +29732,7 @@ var TaskBoard = /*#__PURE__*/function (_React$Component) {
 
 var _default = TaskBoard;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/components/BoardList.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _TaskBoard = _interopRequireDefault(require("./TaskBoard"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var BoardList = /*#__PURE__*/function (_React$Component) {
-  _inherits(BoardList, _React$Component);
-
-  var _super = _createSuper(BoardList);
-
-  function BoardList(props) {
-    var _this;
-
-    _classCallCheck(this, BoardList);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      boardItems: ['Thinking of doing', 'Will Do next', 'Working on it', 'Done wright', 'Done long time ago']
-    };
-    _this.addBoard = _this.addBoard.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(BoardList, [{
-    key: "addBoard",
-    value: function addBoard() {
-      //alert('Add a board!');
-      var temp = this.state.boardItems;
-      temp.push("Another Entry");
-      this.setState({
-        boardItems: temp
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      //let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago','Sixth Entry'];
-      var listItems = this.state.boardItems.map(function (boardName) {
-        return /*#__PURE__*/_react.default.createElement(_TaskBoard.default, {
-          boardName: boardName
-        });
-      }); //
-
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-        className: "flex-row"
-      }, listItems), /*#__PURE__*/_react.default.createElement("button", {
-        onClick: this.addBoard,
-        id: "add-board",
-        type: "button"
-      }, "+"));
-    }
-  }]);
-
-  return BoardList;
-}(_react.default.Component);
-
-var _default = BoardList;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./TaskBoard":"src/components/TaskBoard.js"}],"src/components/NameForm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/components/NameForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29888,6 +29799,7 @@ var NameForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(event) {
       alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
+      this.props.onNewBoardSubmitted(this.state.value);
     }
   }, {
     key: "render",
@@ -29910,7 +29822,102 @@ var NameForm = /*#__PURE__*/function (_React$Component) {
 
 var _default = NameForm;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/components/BoardList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _TaskBoard = _interopRequireDefault(require("./TaskBoard"));
+
+var _NameForm = _interopRequireDefault(require("./NameForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var BoardList = /*#__PURE__*/function (_React$Component) {
+  _inherits(BoardList, _React$Component);
+
+  var _super = _createSuper(BoardList);
+
+  function BoardList(props) {
+    var _this;
+
+    _classCallCheck(this, BoardList);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      boardItems: ['Thinking of doing', 'Will Do next', 'Working on it', 'Done wright', 'Done long time ago']
+    };
+    _this.addBoard = _this.addBoard.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(BoardList, [{
+    key: "addBoard",
+    value: function addBoard($boardName) {
+      //alert('Add a board!');
+      var temp = this.state.boardItems; //temp.push("Another Entry");
+
+      temp.push($boardName);
+      this.setState({
+        boardItems: temp
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      //let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago','Sixth Entry'];
+      var listItems = this.state.boardItems.map(function (boardName) {
+        return /*#__PURE__*/_react.default.createElement(_TaskBoard.default, {
+          boardName: boardName
+        });
+      }); //
+
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+        className: "flex-row"
+      }, listItems), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.addBoard,
+        id: "add-board",
+        type: "button"
+      }, "+"), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
+        name: "Enter Board Name ",
+        onNewBoardSubmitted: this.addBoard
+      }));
+    }
+  }]);
+
+  return BoardList;
+}(_react.default.Component);
+
+var _default = BoardList;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./TaskBoard":"src/components/TaskBoard.js","./NameForm":"src/components/NameForm.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("./scss/app.scss");
@@ -29922,8 +29929,6 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 var _Header = _interopRequireDefault(require("./components/Header"));
 
 var _BoardList = _interopRequireDefault(require("./components/BoardList"));
-
-var _NameForm = _interopRequireDefault(require("./components/NameForm"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29965,15 +29970,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
-        name: "Fazlur"
-      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
-        name: "Ruku"
-      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
-        name: "Fowzia"
-      }), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
-        name: "Farhan"
-      }));
+      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)));
     }
   }]);
 
@@ -29983,7 +29980,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
 var App = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(TheApp, null), App);
-},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js","./components/NameForm":"src/components/NameForm.js"}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30011,7 +30008,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44399" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40237" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

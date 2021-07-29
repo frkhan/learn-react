@@ -1,5 +1,7 @@
 import React from 'react';
 import TaskBoard from './TaskBoard';
+import NameForm from "./NameForm";
+
 
 class BoardList extends React.Component {
 
@@ -8,11 +10,12 @@ class BoardList extends React.Component {
         this.state =  { boardItems : ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago']};
         this.addBoard = this.addBoard.bind(this);
     }
-    addBoard(){
+    addBoard($boardName){
         //alert('Add a board!');
 
         let temp = this.state.boardItems;
-        temp.push("Another Entry");        
+        //temp.push("Another Entry");
+        temp.push($boardName);
         this.setState({boardItems: temp });
 
     }
@@ -34,6 +37,8 @@ class BoardList extends React.Component {
                     {listItems}
                 </div>
                 <button onClick={this.addBoard} id="add-board" type="button">+</button>
+                <hr/>
+                <NameForm name="Enter Board Name " onNewBoardSubmitted={this.addBoard}/>
             </div>
 
 
