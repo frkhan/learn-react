@@ -17,16 +17,18 @@ class NameForm extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        // alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
-        this.props.onNewBoardSubmitted(this.state.value);
+        this.props.addBoard(this.state.value);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="name-form">
+                <div>{this.props.cat}</div>
+                <div>{this.props.dog}</div>
                 <label>
-                    {this.props.name} Name:
+                    Type name of the Board :
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Submit" />

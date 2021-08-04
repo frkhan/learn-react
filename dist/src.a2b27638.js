@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -149,7 +149,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
+},{"./bundle-url":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/app.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+},{"_css_loader":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -23195,18 +23195,18 @@ if ("development" !== "production") {
 
                   if (renderState.tail === null && renderState.tailMode === 'hidden' && !renderedTail.alternate && !getIsHydrating() // We don't cut it if we're hydrating.
                   ) {
-                    // We need to delete the row we just rendered.
-                    // Reset the effect list to what it was before we rendered this
-                    // child. The nested children have already appended themselves.
-                    var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
+                      // We need to delete the row we just rendered.
+                      // Reset the effect list to what it was before we rendered this
+                      // child. The nested children have already appended themselves.
+                      var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
 
-                    if (lastEffect !== null) {
-                      lastEffect.nextEffect = null;
-                    } // We're done.
+                      if (lastEffect !== null) {
+                        lastEffect.nextEffect = null;
+                      } // We're done.
 
 
-                    return null;
-                  }
+                      return null;
+                    }
                 } else if ( // The time it took to render last row is greater than the remaining
                 // time we have to render. So rendering one more row would likely
                 // exceed it.
@@ -29712,18 +29712,31 @@ var TaskBoard = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(TaskBoard);
 
-  function TaskBoard() {
+  function TaskBoard(props) {
+    var _this;
+
     _classCallCheck(this, TaskBoard);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.removeBoard = _this.removeBoard.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(TaskBoard, [{
+    key: "removeBoard",
+    value: function removeBoard(event) {
+      alert('This board will be removed');
+      event.preventDefault();
+      this.props.deleteBoard(this.props.boardName);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "col-4"
-      }, " ", this.props.boardName);
+      }, /*#__PURE__*/_react.default.createElement("div", null, " ", this.props.boardName), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.removeBoard
+      }, "-"));
     }
   }]);
 
@@ -29797,16 +29810,17 @@ var NameForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
+      // alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
-      this.props.onNewBoardSubmitted(this.state.value);
+      this.props.addBoard(this.state.value);
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/_react.default.createElement("label", null, this.props.name, " Name:", /*#__PURE__*/_react.default.createElement("input", {
+        onSubmit: this.handleSubmit,
+        className: "name-form"
+      }, /*#__PURE__*/_react.default.createElement("div", null, this.props.cat), /*#__PURE__*/_react.default.createElement("div", null, this.props.dog), /*#__PURE__*/_react.default.createElement("label", null, "Type name of the Board :", /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
         value: this.state.value,
         onChange: this.handleChange
@@ -29876,7 +29890,8 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
     };
     _this.addBoard = _this.addBoard.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // This function add a Board into the board list
+
 
   _createClass(BoardList, [{
     key: "addBoard",
@@ -29890,24 +29905,38 @@ var BoardList = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "deleteBoard",
+    value: function deleteBoard($boardName) {
+      alert($boardName + " will be deleted");
+    }
+  }, {
     key: "render",
     value: function render() {
-      //let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago','Sixth Entry'];
+      var _this2 = this;
+
+      // This map create a child board for each item in the list
       var listItems = this.state.boardItems.map(function (boardName) {
         return /*#__PURE__*/_react.default.createElement(_TaskBoard.default, {
-          boardName: boardName
+          boardName: boardName,
+          deleteBoard: _this2.deleteBoard
         });
-      }); //
-
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+      });
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "board-list"
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "flex-row"
       }, listItems), /*#__PURE__*/_react.default.createElement("button", {
         onClick: this.addBoard,
         id: "add-board",
         type: "button"
+      }, "+"), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.boardItems,
+        id: "remove-board",
+        type: "button"
       }, "+"), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_NameForm.default, {
-        name: "Enter Board Name ",
-        onNewBoardSubmitted: this.addBoard
+        addBoard: this.addBoard,
+        dog: "ryan",
+        cat: "Billi"
       }));
     }
   }]);
@@ -29970,7 +29999,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)));
+      }, /*#__PURE__*/_react.default.createElement(_BoardList.default, null)), "console.log(props);");
     }
   }]);
 
@@ -29980,7 +30009,7 @@ var TheApp = /*#__PURE__*/function (_React$Component) {
 var App = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(TheApp, null), App);
-},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scss/app.scss":"src/scss/app.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header":"src/components/Header.js","./components/BoardList":"src/components/BoardList.js"}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30008,7 +30037,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40237" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30184,5 +30213,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.nvm/versions/node/v14.17.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
+},{}]},{},["../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
 //# sourceMappingURL=/src.a2b27638.js.map

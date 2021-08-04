@@ -14,6 +14,7 @@ class TheApp extends React.Component {
                 <div className="container">
                     <BoardList/>
                 </div>
+                console.log(props);
             </div>
         );
     }
