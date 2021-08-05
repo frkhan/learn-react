@@ -10,6 +10,8 @@ class BoardList extends React.Component {
         this.state =  { boardItems : ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago']};
         this.addBoard = this.addBoard.bind(this);
     }
+
+    // This function add a Board into the board list
     addBoard($boardName){
         //alert('Add a board!');
 
@@ -20,30 +22,32 @@ class BoardList extends React.Component {
 
     }
 
+    deleteBoard($boardName){
+        alert($boardName + " will be deleted")
+    }
+
     render() {
 
-        //let boardItems = ['Thinking of doing','Will Do next','Working on it','Done wright','Done long time ago','Sixth Entry'];
+       // This map create a child board for each item in the list
         const listItems = this.state.boardItems.map(
             (boardName) =>
-                <TaskBoard boardName={boardName}/>
+                <TaskBoard boardName={boardName} deleteBoard={this.deleteBoard}/>
         );
 
-       //
+       
 
 
         return (
-            <div>
+            <div className="board-list">
                 <div className="flex-row">
                     {listItems}
                 </div>
                 <button onClick={this.addBoard} id="add-board" type="button">+</button>
+                <button onClick={this.boardItems} id="remove-board" type="button">+</button>
                 <hr/>
-                <NameForm name="Enter Board Name " onNewBoardSubmitted={this.addBoard}/>
+                <NameForm addBoard={this.addBoard} dog="ryan" cat="Billi"/>
             </div>
-
-
-
-    );
+            );
     }
 }
 
